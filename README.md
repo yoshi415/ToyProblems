@@ -1,1 +1,1 @@
-# ToyProblems
+A collection of toy problems I've worked on.
