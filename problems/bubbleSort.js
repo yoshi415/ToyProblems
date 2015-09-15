@@ -29,5 +29,23 @@
 */
 
 var bubbleSort = function(array) {
+  // flag to recurse or return
+  var done = true;
+  for (var i = 0; i < array.length - 1; i++) {
+    var temp;
+    // are two elements sorted yet?
+    if (array[i]>array[i+1]) {
+      // will recurse one extra time for clean pass check
+      done=false;
+      // swap elements
+      temp=[array[i], array[i+1]];
+      array[i]=temp[1];
+      array[i+1]=ref[0];
+    }
+  }
+  if (!done) {
+    bubbleSort(array);
+  }
 
-}
+  return array;
+};
