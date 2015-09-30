@@ -19,12 +19,22 @@ var mixEvents = function(obj) {
   var events = {};
 
   obj.trigger = function (event) {
-    // your code here
+    // check if event exists
+    if (events[event]) {
+      // slice arguments after obj
+      var args = Array.prototype.slice.call(arguments, 1);
+      events[event].forEach(function(cb) {
+        // invoke each cb w/ passed args
+        cb.apply(obj, args);
+      });
+    }
   };
 
   // Register a callback to be fired on this event.
   obj.on = function (event, callback) {
-    // your code here
+    // use an array for storage to check if multiple cb are registered w/ 1 event
+    events[event] = events[event] || [];
+    events[event].push(callback);
   };
   return obj;
 };
